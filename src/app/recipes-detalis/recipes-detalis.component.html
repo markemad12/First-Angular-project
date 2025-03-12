@@ -1,0 +1,17 @@
+<div  *ngIf="!isloading" class="container row justify-content-between">
+      <!-- Ensure recipeDetails is defined before accessing its properties -->
+      <img *ngIf="recipeDetails" [src]="recipeDetails?.recipe?.image_url" class="col-md-5" alt="{{recipeDetails.title}}">
+         <div class="col-md-6">
+          <h3>{{recipeDetails?.recipe?.title}}</h3>
+          <h4>ingredients</h4>
+          <ol>
+              <!-- Ensure recipeDetails.ingredients is an array -->
+              <li *ngFor="let item of recipeDetails?.recipe?.ingredients">{{item}}</li>
+          </ol>
+         </div>
+</div>
+
+<div *ngIf="isloading" class="loading-animation">
+  <div class="spinner"></div>
+  <p>Loading...</p>
+</div>
